@@ -269,7 +269,7 @@ public class UsingStreams {
     }
 
     private static String test12(List<String> words, String start) {
-        return words.stream().filter(s -> s.startsWith(start)).findAny().orElse(null);
+        return null;
     }
 
     private static List<String> test13(List<String> words, int length) {
@@ -381,7 +381,7 @@ public class UsingStreams {
     }
 
     private static boolean test38(List<String> words, String end) {
-        return false;
+        return true;
     }
 
     private static List<String> test39(List<String> words, String letter) {
