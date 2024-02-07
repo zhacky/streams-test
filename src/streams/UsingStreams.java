@@ -221,316 +221,218 @@ public class UsingStreams {
     ///                Tests start here!!!
     /// ----------------------------------------------
     private static List<String> test00(String[] phrase) {
-        List<String> uppercaseWords = null;
-        uppercaseWords = Arrays.stream(phrase).map(String::toUpperCase)
-                .peek(System.out::println)
-                .toList();
-
-        return uppercaseWords;
+        return null;
     }
 
     public static ConcurrentMap<Object, Long> test01(List<String> states) {
-        return states.stream()
-                .collect(Collectors.groupingByConcurrent(s -> s, Collectors.counting()));
+        return null;
     }
 
     private static Map<String, Integer> test02(List<String> states) {
-        Map<String, Long> map = states.stream().collect(Collectors.groupingBy(s -> s, Collectors.counting()));
-        return map.entrySet()
-                .stream().collect(Collectors.toMap(Map.Entry::getKey, e -> Math.toIntExact(e.getValue())));
+        return null;
     }
 
     private static List<String> test03(List<String> words) {
-        List<String> wordsStartingWithA = null;
-        wordsStartingWithA = words.stream()
-                .filter(s -> s.toUpperCase().startsWith("A"))
-                .collect(Collectors.toList());
-
-        return wordsStartingWithA;
+        return null;
     }
 
     private static List<String> test04(List<String> words) {
-        return words.stream().distinct().toList();
+        return null;
     }
 
     private static List<String> test05(List<String> words) {
-        return words.stream().sorted().toList();
+        return null;
     }
 
     private static List<String> test06(List<String> words) {
-        return words.stream().map(w -> {
-            System.out.println(w);
-            return w.toUpperCase();
-        }).toList();
+        return null;
     }
 
     private static void test07(List<String> words) {
-        words.stream().forEach(System.out::print);
+        return;
     }
 
     private static String test08(List<String> words) {
-        return words.stream().collect(Collectors.joining(","));
+        return null;
     }
 
     private static Long test09(List<String> words) {
-        return words.stream().count();
+        return null;
     }
 
     private static boolean test10(List<String> words, String start) {
-        return words.stream().anyMatch(s -> s.startsWith(start));
+        return false;
     }
 
     private static String test11(List<String> words, String start) {
-        return words.stream()
-                .filter(s -> s.startsWith(start))
-                .findFirst()
-                .orElse(null);
+        return null;
     }
 
     private static String test12(List<String> words, String start) {
-        return words.stream().filter(s -> s.startsWith(start)).findAny().orElse(null);
+        return null;
     }
 
     private static List<String> test13(List<String> words, int length) {
-        return words.stream()
-                .filter(s -> s.length() == length)
-                .toList();
+        return null;
     }
 
 
     private static List<Integer> test14(List<String> words) {
-        return words.stream()
-                .map(String::length)
-                .toList();
+        return null;
     }
 
     private static long test15(List<String> words) {
-        return words.stream()
-                .map(String::length)
-                .distinct()
-                .count();
+        return -1;
     }
 
     private static String test16(List<String> words) {
-        return words.stream()
-                .collect(Collectors.joining("-"));
+        return null;
     }
 
     private static String test17(List<String> words) {
-        return words.stream().map(String::toUpperCase).collect(Collectors.joining());
+        return null;
     }
 
     private static boolean test18(List<String> words, int count) {
-        return words.stream()
-                .allMatch(s -> s.length() > count);
+        return false;
     }
 
 
     private static int test19(List<String> words) {
-        return words.stream()
-                .map(String::length)
-                .max(Integer::compareTo)
-                .orElse(0);
+        return -1;
     }
 
     private static int test20(List<String> words) {
-        return words.stream()
-                .map(String::length)
-                .min(Integer::compareTo)
-                .orElse(0);
+        return -1;
     }
 
     private static List<String> test21(List<String> words, String letter) {
-        return words.stream()
-                .filter(s -> s.contains(letter))
-                .toList();
+        return null;
     }
 
     private static long test22(List<String> words, String start) {
-        return words.stream().filter(s -> s.startsWith(start)).count();
+        return -1;
     }
 
     private static Map<Integer, List<String>> test23(List<String> words) {
-        return words.stream()
-                .collect(Collectors.groupingBy(String::length));
+        return null;
     }
 
     private static int test24(List<String> words) {
-        return words.stream()
-                .map(String::length)
-                .reduce(0, Integer::sum);
+        return -1;
     }
 
 
     private static int test25(List<String> words) {
-        return words.stream()
-                .map(String::length)
-                .reduce(1, (a, b) -> a * b);
+        return -1;
     }
 
 
     private static boolean test26(List<String> words, String start) {
-        return words.stream()
-                .noneMatch(s->s.startsWith(start));
+        return false;
     }
 
 
     private static List<String> test27(List<String> words) {
-        return words.stream()
-                .limit(3)
-                .toList();
+        return null;
     }
 
 
 
     private static List<String> test28(List<String> words, int count) {
-        return words.stream().skip(count)
-                .toList();
+        return null;
     }
 
 
     private static double test29(List<String> words) {
-        return words.stream()
-                .mapToDouble(String::length)
-                .average()
-                .orElse(0);
-
+        return -1;
     }
 
 
     private static List<String> test30(List<String> words, String orig, String replacement) {
-        return words.stream()
-                .map(s->s.replace(orig, replacement))
-                .collect(Collectors.toList());
+        return null;
     }
 
     private static boolean test31(List<String> words) {
-        return words.stream()
-                .allMatch(s -> s.toUpperCase().equals(s));
+        return false;
     }
 
     private static String test32(List<String> words) {
-        return words.stream()
-                .flatMap(s -> Arrays.stream(s.split("")))
-                .distinct()
-                .collect(Collectors.joining());
+        return null;
     }
 
     private static Set<String> test33(List<String> words) {
-        return words.stream()
-                .collect(Collectors.toSet());
+        return null;
     }
 
     private static List<String> test34(List<String> words) {
-
-        return words.stream()
-                .peek(s -> System.out.printf("Length: %d, Uppercase: %s", s.length(), s.toUpperCase()))
-                .toList();
+        return null;
     }
 
     private static String test35(List<String> words) {
-        return words.stream()
-                .max(Comparator.comparingInt(String::length))
-                .orElse(null);
+        return null;
     }
     private static String test36(List<String> words) {
-        return words.stream()
-                .min(Comparator.comparingInt(String::length))
-                .orElse(null);
+        return null;
     }
 
     private static List<String> test37(List<String> words) {
-        return words.stream()
-                .map(s -> new StringBuilder(s).reverse().toString())
-                .collect(Collectors.toList());
+        return null;
     }
 
     private static boolean test38(List<String> words, String end) {
-        return words.stream()
-                .allMatch(s->s.endsWith(end));
+        return true;
     }
 
     private static List<String> test39(List<String> words, String letter) {
-        return words.stream()
-                .filter(s -> !s.contains(letter))
-                .toList();
+        return null;
     }
 
     private static List<String> test40(List<String> words) {
-        return words.stream()
-                .map(s -> Character.toUpperCase(s.charAt(0)) + s.substring(1))
-                .toList();
+        return null;
     }
 
     private static int test41(List<String> words, String start) {
-        return words.indexOf(
-                words.stream()
-                        .filter(s -> s.startsWith(start))
-                        .findFirst()
-                        .orElse(null)
-        );
+        return -1;
     }
 
     private static boolean test42(List<String> words) {
-        return words.stream()
-                .anyMatch(s -> s.matches(".*\\d.*"));
+        return false;
     }
 
     private static List<String> test43(List<String> words, String replacement) {
-        return words.stream()
-                .map(s -> s.replaceAll("[aeiouAEIOU]", replacement))
-                .toList();
+        return null;
     }
 
     private static List<String> test44(List<String> words) {
-        return words.stream()
-                .flatMap(s -> Arrays.stream(s.split("")))
-                .distinct()
-                .collect(Collectors.toList());
+        return null;
     }
 
     private static boolean test45(List<String> words, int length) {
-        return words.stream()
-                .allMatch(s -> s.length()>= length);
+        return false;
     }
 
     private static boolean test46(List<String> words, int length) {
-        return words.stream()
-                .anyMatch(s->s.length()==length);
+        return false;
     }
 
     private static String test47(List<String> words) {
-        return words.stream()
-                .skip(1)
-                .findFirst()
-                .orElse(null);
+        return null;
     }
 
     private static List<String> test48(List<String> words) {
-        return words.stream()
-                .collect(Collectors.toSet())
-                .stream()
-                .sorted(Comparator.reverseOrder())
-                .collect(Collectors.toList());
+        return null;
     }
 
     private static int test49(List<String> words, String start) {
-        return words.lastIndexOf(
-                words.stream()
-                        .filter(s->s.startsWith(start))
-                        .findFirst()
-                        .orElse(null)
-        );
+        return -1;
     }
 
     private static List<String> test50(List<String> words, String letter) {
-        return words.stream()
-                .filter(s -> !s.contains(letter))
-                .toList();
+        return null;
     }
 
     private static boolean test51(List<String> words, int count) {
-        return words.stream()
-                .noneMatch(s -> s.length() > count);
+        return false;
     }
 }
