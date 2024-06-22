@@ -1,12 +1,14 @@
 package streams;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.*;
 import java.util.concurrent.ConcurrentMap;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -39,6 +41,7 @@ class UsingStreamsTest {
     // endregion
 
     @Test
+    @DisplayName("Test00: Just print each word ...")
     void creatingStreams_JustPrint() {
         // given
         List<String> expected = List.of("THE", "QUICK", "BROWN", "FOX");
@@ -50,9 +53,11 @@ class UsingStreamsTest {
         assertTrue(printedWords.contains("QUICK"));
         assertTrue(printedWords.contains("BROWN"));
         assertTrue(printedWords.contains("FOX"));
+        assertEquals(expected, actual);
     }
 
     @Test
+    @DisplayName("Test01: Return the count of each state ...")
     void getCounts_returnCountOfEachState() {
         // given
         Long expectedTexas = 3L;
@@ -67,6 +72,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test02: Just print each word ...")
     void getCounts_returnCountOfEachStateNonConcurrent() {
         // given
         int expectedTexas = 3;
@@ -78,6 +84,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test03: Return words that start with A ...")
     void filterWords_returnWordsThatStartWithA() {
         // given
         List<String> expected = List.of("apple", "apple");
@@ -88,6 +95,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test04: Return words with duplicates ...")
     void removeDuplicateWords_returnWordsWithoutDuplicates() {
         // given
         List<String> expected = List.of("apple", "banana", "orange", "grape", "pear", "kiwi");
@@ -156,6 +164,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test10: Return true if any word starts with ...")
     void checkWords_returnTrueIfAnyWordStartsWith() {
         // given
         boolean expected1 = true;
@@ -169,6 +178,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test11: Return the first word that starts with ...")
     void findWord_returnFirstWordStartingWith() {
         // given
         String expectedStartsWithO = "orange";
@@ -177,10 +187,11 @@ class UsingStreamsTest {
         String actualStartsWithZ = UsingStreams.findFirstStartsWith(words, "z");
         // then
         assertEquals(expectedStartsWithO, actualStartsWithO);
-        assertEquals(null, actualStartsWithZ);
+        assertNull(actualStartsWithZ);
     }
 
     @Test
+    @DisplayName("Test12: Return any word that starts with ...")
     void findWord_returnAnyWordStartsWith() {
         // given
         String expectedStartsWithK = "kiwi";
@@ -189,10 +200,11 @@ class UsingStreamsTest {
         String actualStartsWithZ = UsingStreams.findAnyStartsWith(words, "z");
         // then
         assertEquals(expectedStartsWithK, actualStartsWithK);
-        assertEquals(null, actualStartsWithZ);
+        assertNull(actualStartsWithZ);
     }
 
     @Test
+    @DisplayName("Test13: Return words of given length ...")
     void findWords_returnWordsOfGivenLength() {
         // given
         int length1 = 5;
@@ -207,6 +219,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test14: Return a list of the lengths of the words ...")
     void listLengths_returnListOfWordLengths() {
         // given
         List<Integer> expected = List.of(5, 6, 6, 5, 4, 4, 5);
@@ -217,6 +230,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test15: Count the number of each length distinct ...")
     void lengths_countTheNumberOfDistinctLengths() {
         // given
         long expected = 3;
@@ -227,6 +241,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test16: Concatenate the words with hyphen ...")
     void hyphenSeparated_concatenateWordsWithHyphen() {
         // given
         String expected = "apple-banana-orange-grape-pear-kiwi-apple";
@@ -237,6 +252,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test17: Convert words to uppercase then concatenate them ...")
     void upperConcatenated_convertWordsToUppercaseThenConcatenateThem() {
         // given
         String expected = "APPLEBANANAORANGEGRAPEPEARKIWIAPPLE";
@@ -247,6 +263,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test18: Return true if all the words have lengths greater than ...")
     void checkWords_returnTrueIfAllWordsHaveLengthGreaterThan() {
         // given
         boolean expected1 = true;
@@ -260,6 +277,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test19: Return maximum length of a word ...")
     void findMax_returnMaximumLengthOfAWord() {
         // given
         int expected = 6;
@@ -270,6 +288,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test20: Return minimum length of a word ...")
     void findMin_returnMinimumLengthOfAWord() {
         // given
         int expected = 4;
@@ -280,6 +299,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test21: Return words that contain ...")
     void findWords_returnWordsThatContain() {
         // given
         List<String> expected1 = List.of("apple", "grape", "pear", "apple");
@@ -295,6 +315,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test22: Return the number of words that start with ...")
     void countWords_returnCountOfWordsStartingWith() {
         // given
         long expected1 = 1;
@@ -308,6 +329,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test23: Return words grouped by their lengths ...")
     void groupWords_returnWordGroupsByLength() {
         // given
         Map<Integer, List<String>> expected = Map.of(4, List.of("pear", "kiwi"), 5, List.of("apple", "grape", "apple"), 6, List.of("banana", "orange"));
@@ -320,6 +342,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test24: Calculate the total length of all words ...")
     void findSum_calculateTotalLengthOfAllWords() {
         // given
         int expected = 35;
@@ -330,6 +353,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test25: Calculate the total product of lengths of all words ...")
     void findProduct_calculateTheProductOfTheLengthsOfAllWords() {
         // given
         int expected = 72000;
@@ -340,6 +364,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test26: Return true if no words start with ...")
     void checkWords_ifNoWordsStartWith() {
         // given
         boolean expected1 = true;
@@ -353,6 +378,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test27: Return the first 3 words ...")
     void findWords_returnFirstThreeWords() {
         // given
         List<String> expected = List.of("apple", "banana", "orange");
@@ -363,6 +389,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test28: Return the words after skipping the first few ...")
     void findWords_wordsAfterSkippingFirstFew() {
         // given
         List<String> expected1 = List.of("orange", "grape", "pear", "kiwi", "apple");
@@ -376,6 +403,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test29: Return the average length of the words ...")
     void averageLength_findAverageLengthOfWords() {
         // given
         double expected = 5.0;
@@ -386,6 +414,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test30: Replace all occurrences of a letter with ...")
     void replace_allOccurrencesWith() {
         // given
         List<String> expected1 = List.of("Xpple", "bXnXnX", "orXnge", "grXpe", "peXr", "kiwi", "Xpple");
@@ -400,6 +429,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test31: Return true if all words are in uppercase ...")
     void checkWords_ifAllWordsUppercase() {
         // given
         List<String> modified = words.stream().map(String::toUpperCase).toList();
@@ -411,6 +441,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test32: Return all letters from all words distinct and concatenate them ...")
     void contatenateLetters_returnConcatenatedDistinctLettersFromAllWords() {
         // given
         String expected = "aplebnorgkiw";
@@ -421,6 +452,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test33: Return a set from the list of words ...")
     void convertWords_returnASetOfWords() {
         // given
         Set<String> expected = Set.of("apple", "banana", "orange", "grape", "pear", "kiwi");
@@ -431,6 +463,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test34: Print the lengths and the uppercase form of each word ...")
     void printLengths_wordLengthsAndTheirUppercaseForm() {
         // given
         // when
@@ -442,6 +475,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test35: Return the longest word ...")
     void longestWord_findTheLongestWord() {
         // given
         String expected = "banana";
@@ -452,6 +486,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test36: Return the shortest word ...")
     void shortestWord_findTheShortestWord() {
         // given
         String expected = "pear";
@@ -462,6 +497,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test37: Return all words after reversing each one ...")
     void reverse_eachWord() {
         // given
         List<String> expected = List.of("elppa", "ananab", "egnaro", "eparg", "raep", "iwik", "elppa");
@@ -472,6 +508,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test38: Return true if all words end with ...")
     void checkWords_allWordsEndWith() {
         // given
         boolean expected = false;
@@ -482,6 +519,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test39: Return all words with the word containing the letter ...")
     void removeWords_containingTheLetter() {
         // given
         List<String> expected1 = List.of("apple", "banana", "orange", "grape", "pear", "apple");
@@ -495,6 +533,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test40: Return all words with the first letter in uppercase ...")
     void convertWord_convertTheFirstLetterOfEachWord() {
         // given
         List<String> expected1 = List.of("Apple", "Banana", "Orange", "Grape", "Pear", "Kiwi", "Apple");
@@ -505,6 +544,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test41: Return the index of the word that starts with ...")
     void findIndex_findWordIndexOfFirstWordStartingWith() {
         // given
         int expected1 = 3;
@@ -515,6 +555,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test42: Return true if the list contains a word with a digit...")
     void checkWords_ifAnyWordContainsDigit() {
         // given
         boolean expected1 = false;
@@ -529,6 +570,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test43: Replace vowels in each word with ...")
     void replaceVowels_inEachWordReplaceWith() {
         // given
         var expected = List.of("XpplX", "bXnXnX", "XrXngX", "grXpX", "pXXr", "kXwX", "XpplX");
@@ -540,6 +582,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test44: Return a list of distinct letters from all the words ...")
     void findLetters_extractDistinctLettersFromWords() {
         // given
         List<String> expected = List.of("a", "p", "l", "e", "b", "n", "o", "r", "g", "k", "i", "w");
@@ -550,6 +593,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test45: Return true if all the words have at least a character length of ...")
     void checkWords_ifAllWordsHaveAtLeastCharacterLengthOf() {
         // given
         boolean expected1 = true;
@@ -563,6 +607,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test46: Return true if any word has exactly the length of ...")
     void checkWords_ifAnyWordHasExactlyCharacters() {
         // given
         boolean expected1 = true;
@@ -576,6 +621,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test47: Return the second word from the list ...")
     void findWord_returnTheSecondWord() {
         // given
         String expected = "banana";
@@ -586,6 +632,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test48: Reverse the list and collect to a set ...")
     void collectToSet_inReverseOrder() {
         // given
         List<String> expected = List.of("pear", "orange", "kiwi", "grape",  "banana", "apple");
@@ -596,6 +643,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test49: Return the index of the last word that starts with ...")
     void findIndex_returnIndexOfLastWordStartingWith() {
         // given
         int expected1 = 6;
@@ -609,6 +657,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test50: Remove the words except the words containing the letter ...")
     void removeWords_exceptWordsContainingTheLetter() {
         // given
         List<String> expected1 = List.of("apple", "banana", "orange", "grape", "pear", "apple");
@@ -622,6 +671,7 @@ class UsingStreamsTest {
     }
 
     @Test
+    @DisplayName("Test51: Return true if list has no word more than ...")
     void checkWords_noMoreThanCharacters() {
         // given
         boolean expected1 = true;
