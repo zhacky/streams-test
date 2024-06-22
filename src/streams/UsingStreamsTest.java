@@ -116,7 +116,7 @@ class UsingStreamsTest {
         // then
         String printedWords = outContent.toString();
         StringBuilder sb = new StringBuilder();
-        for (String word : words) sb.append(word).append("\n");
+        for (String word : words) sb.append(word).append("\r\n");
         assertTrue(printedWords.contentEquals(sb));
         assertLinesMatch(expected, actual);
     }
