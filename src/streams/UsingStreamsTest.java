@@ -660,8 +660,8 @@ class UsingStreamsTest {
     @DisplayName("Test50: Remove the words except the words containing the letter ...")
     void removeWords_exceptWordsContainingTheLetter() {
         // given
-        List<String> expected1 = List.of("apple", "banana", "orange", "grape", "pear", "apple");
-        List<String> expected2 = List.of("banana", "orange", "kiwi");
+        List<String> expected1 = List.of("kiwi");
+        List<String> expected2 = List.of("apple", "grape", "pear","apple");
         // when
         List<String> actual1 = UsingStreams.removeWordsContaining(words, "k");
         List<String> actual2 = UsingStreams.removeWordsContaining(words, "p");

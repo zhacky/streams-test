@@ -232,10 +232,18 @@ public class UsingStreams {
         return null;
     }
 
+    /**
+     * Get words that start with A
+     * @param words given list of strings
+     * @return list of strings
+     */
     private static List<String> test03(List<String> words) {
         return null;
     }
 
+    /**
+     * @see UsingStreams#getWordsWithoutDuplicates(List)
+     */
     private static List<String> test04(List<String> words) {
         return null;
     }
